@@ -1,0 +1,101 @@
+
+.masthead {
+    height: 100vh;
+    min-height: 500px;
+    background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+.title{
+    font-size: 29px;
+  }
+
+.item{
+    font-size: 19px;
+  }
+
+.border {
+    border: 1px solid;
+  }
+
+.clarity {
+    opacity: 45%;
+  }
+
+.danger {
+  color: red;
+  font-size: 14px;
+}
+
+.card-body {
+  flex-direction: column;
+}
+
+.filterbtn {
+  color: black;
+  border-color: black;  
+}
+
+.greater {
+  font-size: 15px;
+}
+
+.perfilBtns:hover {
+  background-color: rgb(245, 244, 244);
+}
+
+.greatericon {
+  font-size: 21px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+}
+
+.loading--full-height {
+  align-items: center;
+  height: 100%;
+}
+
+.loading::after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  border: 10px solid #dddddd;
+  border-top-color: rgb(0, 140, 255);
+  border-radius: 50%;
+  transform: rotate(0.16turn);
+  animation: loading 1s ease infinite;
+}
+
+@keyframes loading {
+  /* Safari support */
+  from {
+    transform: rotate(0turn);
+  }
+  
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media(max-width: 405px){
+
+  .centeronedoc {
+    margin-left: 50px;
+  }
+
+  .document {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}  
+
+@media(min-width: 2255px){
+  .filter {
+    padding-right: 350px;
+  }
+}

@@ -1,0 +1,92 @@
+<%- include('layout/navbar', {username: username}) %>
+
+    <div class="container-fluid">
+        <div class="w-100 mt-5 ml-sm-5 d-flex">
+            <h1>Mis documentos</h1>
+            <i class="fa-solid fa-circle-question" data-toggle="popover" title="<strong>Ayuda<strong>"
+                data-content='<p class="greater"><i class="fa-solid fa-file greatericon"></i> -> archivo .txt</p>
+                                                                                                                 <p class="greater"><i class="fa-solid fa-file-pdf greatericon"></i>    -> archivo .pdf</p>
+                                                                                                                 <p class="greater"><i class="fa-solid fa-file-image greatericon"></i>  -> archivos .jpg y .png</p>
+                                                                                                                 <p class="greater"><i class="fa-solid fa-file-word greatericon"></i>   -> archivo .doc</p>
+                                                                                                                 <p class="greater"><i class="fa-solid fa-file-zipper greatericon"></i> -> archivo .zip y .rar</p>'></i>
+
+        </div>
+        <div class="float-right mr-3 filter row">
+            <div class="col">
+                <form action="/documents/order/alphabeticDesc" method="get">
+                    <button type="submit" class="btn btn-sm btn-outline-primary filterbtn" data-toggle="tooltip"
+                        data-placement="bottom" title="Ordenar de la A-Z"><i
+                            class="fa-solid fa-arrow-up-a-z"></i></button>
+                </form>
+            </div>
+            <div class="col">
+                <form action="/documents/order/alphabeticAsc" method="get">
+                    <button type="submit" class="btn btn-sm btn-outline-primary filterbtn" data-toggle="tooltip"
+                        data-placement="bottom" title="Ordenar de la Z-A"><i
+                            class="fa-solid fa-arrow-down-z-a"></i></button>
+                </form>
+            </div>
+            <div class="col">
+                <form action="/documents/order/extension" method="get">
+                    <button type="submit" class="btn btn-sm btn-outline-primary filterbtn" data-toggle="tooltip"
+                        data-placement="bottom" title="Ordenar por tipo de archivo"><i
+                            class="fa-solid fa-arrow-down-short-wide"></i></button>
+                </form>
+            </div>
+        </div>
+
+
+<div class="container-fluid ml-xl-3 centeronedoc adjust">
+    <section class="w-100 mt-3 d-flex">
+        <div class="row documents" data-length="<%=documents.length%>">
+            <% var counter = 0; %>
+            <% documents.forEach( document => { %>
+                <% if(documents.length < 5) { %>
+                    <% if(documents.length == 1) { %>
+                        <%- include('layout/document', {document: document, docCounter: counter, grid: {
+                            col: 12,
+                            sm: 12,
+                            md: 12,
+                            lg: 12
+                            }  
+                            }); %>
+                    <% }else if(documents.length == 2) { %>
+                        <%- include('layout/document', {document: document, docCounter: counter, grid: {
+                            col: 6,
+                            sm: 6,
+                            md: 6,
+                            lg: 6
+                            }  
+                            }); %>
+                    <% }else if(documents.length == 3) { %>
+                        <%- include('layout/document', {document: document, docCounter: counter, grid: {
+                            col: 6,
+                            sm: 4,
+                            md: 4,
+                            lg: 4
+                            }  
+                            }); %>
+                    <% }else if(documents.length == 4) { %>
+                        <%- include('layout/document', {document: document, docCounter: counter, grid: {
+                            col: 6,
+                            sm: 4,
+                            md: 3,
+                            lg: 3
+                            }  
+                            }); %>
+                    <% } %>
+                <% }else{ %>
+                    <%- include('layout/document', {document: document, docCounter: counter, grid: {
+                        col: 6,
+                        sm: 4,
+                        md: 3,
+                        lg: 2
+                        } 
+                        }); %>
+                <% } %>
+            <% counter++; }); %>
+        </div>
+    </section>
+</div>
+
+<%- include('layout/footer') %>

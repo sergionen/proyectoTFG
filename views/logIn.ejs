@@ -1,0 +1,62 @@
+<%- include('layout/header') %>
+
+<div class="container-fluid">
+    <section class="w-100 p-4 d-flex justify-content-center pb-4">
+        <h1> Sistema de almacenaje distribuido </h1>
+    </section>
+</div>
+<div class="container-fluid bg-white border-top rounded-5">
+    <section class="w-100 p-4 d-flex justify-content-center pb-4">
+      <form style="width: 22rem;" action="login" method="post">
+
+        <!-- Title input -->
+        <div class="form-outline mb-4">
+          <h3 class="text-center">
+            Iniciar sesión
+          </h3>
+        </div>
+
+        <!-- Username input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="username" style="margin-left: 0px;">Nombre de usuario</label>
+          <input type="text" name="username" id="username" class="form-control" value="<% if(typeof values != 'undefined' && typeof values.username != 'undefined') { %><%=values.username%><%}%>">
+          <% if(typeof errors != 'undefined' && typeof errors.username != 'undefined'){ %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong><%= errors.username.msg %> </strong> 
+            </div>
+          <% } %>
+        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="password" style="margin-left: 0px;">Contraseña</label>
+          <input type="password" name="password" id="password" class="form-control" value="<% if(typeof values != 'undefined' && typeof values.password != 'undefined') { %><%=values.password %><%}%>">
+          <% if(typeof errors != 'undefined' && typeof errors.password != 'undefined'){ %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong><%= errors.password.msg %> </strong> 
+            </div>
+          <% } %> 
+        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div></div>
+
+        <% if(typeof error != 'undefined' ) { %>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong><%= error %> </strong> 
+          </div>
+        <% } %> 
+
+        <!-- Submit button -->
+        <div class="row">
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary btn-block mb-4">Iniciar sesión</button>
+            </div>
+            <div class="col-6">
+                <a href="/signup">
+                    <button type="button" class="border border-primary btn btn-default btn-block mb-4">Registrarse</button>
+                </a>
+            </div>
+        </div>
+      </form>
+    </section>    
+  </div>
+
+  <%- include('layout/footer') %>

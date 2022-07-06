@@ -1,0 +1,66 @@
+<%- include('header') %>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light shadow py-3">
+    <div class="container">
+      <a class="navbar-brand title" href="/documents">
+        <i class="fa-solid fa-file"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link item documents" href="/documents">Documentos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link item" href="/document/upload">Subir</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right mr-5">
+          <span class="mt-2 mr-2 d-none d-md-block">¡Bienvenido <%=username%>!</span>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false"><i class="fa-solid fa-user-large" data-toggle="tooltip" data-placement="bottom"
+                title="Perfil"></i></i></a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <form action="/logout" method="post">
+                  <button type="submit" class="btn btn-link btn-block text-left nav-link active perfilBtns"><i
+                      class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</button>
+                </form>
+              </li>
+              <li>
+                <button type="button" id="modalBtnDeleteAccount"
+                  class="btn btn-link btn-block text-left nav-link active text-danger perfilBtns"
+                  data-bs-toggle="modal" data-bs-target="#DeleteAccountModal">
+                  <i class="fa-solid fa-trash-can"></i> Eliminar cuenta
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="DeleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteAccountModalLabel">Eliminar cuenta</h5>
+            <button type="button" id="closeModalDeleteAcountIcon" class="btn-close" data-bs-dismiss="modal"
+              aria-label="Close"></button>
+          </div>
+          <div class="modal-body">¿Está seguro de que quiere eliminar su cuenta? Esta acción es irreversible y todos sus
+            documentos serán eliminados.</div>
+          <div class="modal-footer">
+            <button type="button" id="closeModalDeleteAcount" class="btn btn-secondary"
+              data-bs-dismiss="modal">Cancelar</button>
+            <form action="/user/delete" method="post">
+              <button type="submit" id="acceptModalBtn" class="btn btn-outline-danger">Eliminar cuenta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>

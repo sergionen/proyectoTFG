@@ -1,0 +1,40 @@
+
+<div class="col-<%=grid.col%> col-sm-<%=grid.sm%> col-md-<%=grid.md%> col-lg-<%=grid.lg%> mt-3 d-inline-flex align-items-stretch document">
+    <div class="card">
+        <img class="card-img-top mt-3" src="/images/<%=document.extension%>" width="60px" height="60px" alt="archivo">
+        <div class="card-body d-flex flex-column">
+            <p class="card-title">
+                <%=document.name%>
+            </p>
+            <div class="d-flex mt-auto">
+                <form action="/document/download" method="post">
+                    <input class="d-none" type="text" name="document_id" id="document_id" class="form-control" value="<%=document._id%>">
+                    <button type="submit" class="btn btn-outline-primary"> Descargar </button>
+                    <button type="button" id="modalBtnDeleteDoc<%=docCounter%>" class="btn btn-link danger" data-bs-toggle="modal"
+                        data-bs-target="#DeleteDocModal<%=docCounter%>" data-modalid="<%=docCounter%>"> Eliminar </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="DeleteDocModal<%=docCounter%>" tabindex="-1" aria-labelledby="DeleteDocModalLabel<%=docCounter%>" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="DeleteDocModalLabel<%=docCounter%>">Eliminar documento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">¿Está seguro de que quiere eliminar el documento <%=document.name%>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="closeModalDeleteDoc<%=docCounter%>" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Cancelar</button>
+                <form action="/document/<%=document._id%>/delete" method="post">
+                    <button type="submit" id="acceptModalBtn<%=docCounter%>" class="btn btn-outline-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 
